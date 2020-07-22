@@ -3,10 +3,10 @@
 session_start();
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: welcome.php");
-    exit;
-}
+// if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    // header("location: welcome.php");
+    // exit;
+// }
  
 // Include config file
 require_once "config.php";
@@ -63,8 +63,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;                            
                             
-                            // Redirect user to welcome page
-                            header("location: welcome.php");
+                            // Redirect user to search page
+                            header("location: search.php");
                         } else{
                             // Display an error message if password is not valid
                             $password_err = "The password you entered was not valid.";
@@ -98,21 +98,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         body{ font: 14px sans-serif;
         background-image: url("sounds-header.jpg"); }
         .wrapper{ width: 350px; padding: 20px; }
-        h1 {
+        .main-title {
             background-color:whitesmoke ;
             width: 500px;
             border: 15px palegreen;
             padding: 50px;
             margin: 20px;
+            top: 8px;
+            left: 16px;
         }
     </style>
 </head>
 <body>
-    <h1> Songs Leading Friends</h1>
+    <h1 class="main-title"> Songs Leading Friends</h1>
     <div class="wrapper">
         <h2>Login</h2>
         <p>Please fill in your credentials to login.</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <form action="search.php" method="post">
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                 <label>Username</label>
                 <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
