@@ -103,17 +103,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         body{ font: 14px sans-serif;
         background-image: url("sounds-header.jpg"); }
         .wrapper{ width: 350px; padding: 20px; }
-        h1 {
+        .main-title {
             background-color:whitesmoke ;
             width: 500px;
-            border:50px #7FFFD4;
+            border: 15px palegreen;
             padding: 50px;
             margin: 20px;
+            top: 8px;
+            left: 16px;
         }
     </style>
 </head>
 <body>
-    <h1> Songs Leading Friends</h1>
+    <h1 class="main-title"> Songs Leading Friends</h1>
     <div class="wrapper">
         <h2>Sign Up</h2>
         <p>Please fill this form to create an account.</p>
