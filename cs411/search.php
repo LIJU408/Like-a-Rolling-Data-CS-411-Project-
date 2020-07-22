@@ -1,16 +1,50 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Search</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <style type="text/css">
+        body{ font: 14px sans-serif;
+        background-image: url("sounds-header.jpg"); }
+        .wrapper{ width: 700px; padding: 20px; }
+        .main-title {
+            background-color:whitesmoke ;
+            width: 500px;
+            border: 15px palegreen;
+            padding: 50px;
+            margin: 20px;
+            top: 8px;
+            left: 16px;
+        }
+        .logout {
+            position: absolute;
+            right: 8px;
+            bottom: 16px;
+        }
+        .welcome {
+            position: absolute;
+            right: 8px;
+            top: 16px;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
-<form method="POST">
+<h1 class="main-title"> Songs Leading Friends</h1>
+<div class="welcome">
+        <h4>Hi, <b><?php echo $_SESSION["username"]; ?></b>.</h4>
+</div>
+<div class="wrapper">
+<form class="search region" method="POST">
     <label for="SBS">Search By Singer:</label>
     <input type="text" name="singer">
     <lable>&nbsp;</label>
-    <button>Search</button>
     <br>
     <br>
     <label for="SBN">Search By Song Name:</label>
@@ -24,6 +58,14 @@
     <br>
     <br>
 </form>
+
+<button>Search</button>
+<br>
+<br>
+<p class="logout">
+        <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
+</p>
+</div>
 <?php
 $singername = $_POST["singer"]??"";
 $songname = $_POST["name"]??"";
@@ -31,7 +73,7 @@ $year1 = $_POST["year1"]??0;
 
 /* Attempt MySQL server connection. Assuming you are running MySQL
 server with default setting (user 'root' with no password) */
-$link = mysqli_connect("localhost", "root", "", "cs411");
+$link = mysqli_connect("localhost", "root", "", "demo");
  
 // Check connection
 if($link === false){
