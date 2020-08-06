@@ -1,0 +1,9 @@
+<?php
+session_start();
+?>
+<?php
+$_SESSION['songid']=$_POST['id'];
+$currentsong=$_SESSION['songid'];
+header("Location:individual_rating.php");
+exit;
+?>
