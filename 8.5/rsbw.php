@@ -54,7 +54,7 @@
 
 
     //Preparation to select top 10 ratings songs for every genre;
-    $get_genre_ratings_sql="SELECT songname, ratings FROM song NATURAL JOIN rating WHERE genre like '$genre' AND (BeatsPerMinute > ($bpm -  30) AND BeatsPerMinute < ($bpm + 30)) ";
+    $get_genre_ratings_sql="SELECT songname, ratings FROM song NATURAL JOIN rating WHERE genre like '$genre' AND (BeatsPerMinute > ($bpm -  30) AND BeatsPerMinute < ($bpm + 30)) And (danceability > ($danceability - 15) AND  danceability < ($danceability + 15)) ";
     $genre_ratings=mysqli_query($link,$get_genre_ratings_sql);
 
     $RecommendRatings = array();
@@ -228,5 +228,6 @@
     </div>
 </body>
 </html>
+
 
 
